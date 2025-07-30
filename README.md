@@ -1,5 +1,7 @@
 # RinsingMachine
 
+## STATE: IN-PROGRESS
+
 ## Main code in src
 [src/main.cpp](src/main.cpp)
 
