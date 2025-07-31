@@ -14,6 +14,7 @@ struct switch_state state_switch { D0, LOW, 0 };
 void dispense_time(int time);
 void dispense_switch();
 void unit_select(int n);
+void move(int n);
 
 char page[478] = "<h2>Motor Control</h2><ul style=list-style-type:none><li><form action=/m_one><input type=submit value=\"Motor one\"></form><li><form action=/m_two><input type=submit value=\"Motor two\"></form><li><form action=/m_three><input type=submit value=\"Motor three\"></form><li><form action=/m_four><input type=submit value=\"Motor four\"></form><li><form action=/m_five><input type=submit value=\"Motor five\"></form><li><form action=/stop><input type=submit value=\"Stop Previous\"></form></ul>";
 ESP8266WebServer server(80);
@@ -40,36 +41,26 @@ void setup() {
         server.send(200, "text/html", page);
     });
 
-    server.on("/m_one", []() {
-        select_channel(motor_pins, 0);
-        MOTOR_ON(MOTOR_PIN);
-    });
+    server.on("/m_one", []() { move(0); });
 
-    server.on("/m_two", []() {
-        select_channel(motor_pins, 1);
-        MOTOR_ON(MOTOR_PIN);
-    });
+    server.on("/m_two", []() { move(1); });
 
-    server.on("/m_three", []() {
-        select_channel(motor_pins, 2);
-        MOTOR_ON(MOTOR_PIN);
-    });
+    server.on("/m_three", []() { move(2); });
 
-    server.on("/m_four", []() {
-        select_channel(motor_pins, 3);
-        MOTOR_ON(MOTOR_PIN);
-    });
+    server.on("/m_four", []() { move(3); });
 
-    server.on("/m_five", []() {
-        select_channel(motor_pins, 4);
-        MOTOR_ON(MOTOR_PIN);
-    });
+    server.on("/m_five", []() { move(4); });
 
     server.on("/stop", []() {
-        MOTOR_OFF(MOTOR_PIN);
+MOTOR_OFF(MOTOR_PIN);
     });
 
     server.begin();
+}
+
+void move(int n) {
+    select_channel(motor_pins, n);
+    MOTOR_ON(MOTOR_PIN);
 }
 
 void loop() {
