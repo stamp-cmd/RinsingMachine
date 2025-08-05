@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html>
+    <!--Minify this and escape double-quotes -->
     <body>
-        <h1>lorem ipsum</h1>
+        <h1>Moodi</h1>
+        <h2>Select your emotion</h2>
         <div>
-            <button>A</button>
+            <hr>
+            <form action="m_one" method="get"><input type="submit" value="Happy :3"></form>
+            <hr>
+            <form action="m_two" method="get"><input type="submit" value="Angry >:3"></form>
+            <hr>
+            <form action="m_three" method="get"><input type="submit" value="Sad :c"></form>
+            <hr>
+            <form action="m_four" method="get"><input type="submit" value="Bored :&sol;"></form>
+            <hr>
         </div>
     </body>
     <style>
-
-    </style>
-    <script>
-        var choices = "";
-        function add(x) {
-            choices += `${x}`;
+        h1 {
+            text-align: center;
+            font-family: Verdana, sans-serif;
+            color: saddlebrown;
+            margin-bottom: 0;
         }
-        
-    </script>
+        h2 {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        body {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            background-color: blanchedalmond;
+            height: 100vh;
+        }
+        input {
+            font-size: 30px;
+            width: 100%;
+            background-color: blanchedalmond;
+            border: 0;
+        }
+        hr {
+            width: 80%;
+            height: 0;
+        }
+        div {
+            width: 800px;
+            height: 70vh;
+            display: grid;
+        }
+    </style>
 </html>
