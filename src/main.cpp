@@ -13,7 +13,7 @@ struct selector_pins switch_pins { D4, D5, D6 };
 
 struct switch_state state_switch { D0, LOW, 0 };
 
-int gen_time(int items, int type);
+int gen_time(int type);
 void dispense_time(int type);
 void dispense_switch();
 void unit_select(int n);
@@ -106,10 +106,10 @@ void setup() {
         times[1] = server.arg("angry").toInt();
         times[2] = server.arg("sad").toInt();
         times[3] = server.arg("bored").toInt();
-        int dhappy = server.arg("dhappy").toInt();
-        int dangry = server.arg("dangry").toInt();
-        int dsad = server.arg("dsad").toInt();
-        int dbored = server.arg("dbored").toInt();
+        dhappy = server.arg("dhappy").toInt();
+        dangry = server.arg("dangry").toInt();
+        dsad = server.arg("dsad").toInt();
+        dbored = server.arg("dbored").toInt();
     });
     
     server.on("/set", []() { server.send(200, "text/html", sets); });
@@ -168,9 +168,9 @@ void dispense_switch() {
 }
 
 // rotate motor for n milliseconds
-void dispense_time(int items, int type) {
+void dispense_time(int type) {
     int start_time = millis();
-    int delay = gen_time(items, type);
+    int delay = gen_time(type);
     MOTOR_ON(MOTOR_PIN);
     while (1) {
         if (millis() - start_time >= (unsigned long)(delay)) {
