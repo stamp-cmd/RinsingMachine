@@ -25,12 +25,12 @@ int times[5] = {1200, 1200, 1200, 1200, 1200};
 int dhappy = 0;
 int dsad = 0;
 int dangry = 0;
-int dbored = 0;
+int danxious = 0;
 
 static const char cont[] PROGMEM = "<a href=\"/move?n=0\">Motor 1</a> <a href=\"/move?n=1\">Motor 2</a> <a href=\"/move?n=2\">Motor 3</a> <a href=\"/move?n=3\">Motor 4</a> <a href=\"/move?n=4\">Motor 5</a> <a href=/stop>Stop All</a>";
 static const char sets[] PROGMEM = "<a href=\"fill?n=0\">Snack 1</a> <a href=\"fill?n=1\">Snack 1</a> <a href=\"fill?n=2\">Snack 1</a> <a href=\"fill?n=3\">Snack 1</a> <a href=\"fill?n=4\">Snack 1</a>";
-static const char page[] PROGMEM = "<title>Website</title><h1>Moodi</h1><h2>Select your emotion</h2><div><hr><form action=http://192.168.4.1/m_one><input type=submit value=\"Happy :3\"></form><hr><form action=http://192.168.4.1/m_two><input type=submit value=\"Angry >:3\"></form><hr><form action=http://192.168.4.1/m_three><input type=submit value=\"Sad :c\"></form><hr><form action=http://192.168.4.1/m_four><input type=submit value=\"Bored :/\"></form><hr></div><style>h1{text-align:center;font-family:Verdana,sans-serif;color:#8b4513;margin-bottom:0}h2{text-align:center;margin-bottom:0}body{display:grid;align-items:center;justify-content:center;background-color:#ffebcd;height:100vh}input{color:#8b4513;font-size:30px;width:100%;background-color:#ffebcd;border:0}hr{width:80%;height:0}div{width:800px;height:70vh;display:grid}</style>";
-static const char tim[] PROGMEM = "<form action=time><input type=number id=happy placeholder=Happy value=1200> <input type=number id=angry placeholder=Angry value=1200> <input type=number id=sad placeholder=Sad value=1200> <input type=number id=bored placeholder=Bored value=1200> <input type=number id=dhappy placeholder=\"Happy Decrement\"value=0> <input type=number id=dangry placeholder=\"Angry Decrement\"value=0> <input type=number id=dsad placeholder=\"Sad Decrement\"value=0> <input type=number id=dbored placeholder=\"Bored Decrement\"value=0> <input type=submit></form>";
+static const char page[] PROGMEM = "<title>Website</title><h1>Moodi</h1><h2>Select your emotion</h2><div><hr><form action=http://192.168.4.1/m_one><input type=submit value=\"Happy :3\"></form><hr><form action=http://192.168.4.1/m_two><input type=submit value=\"Angry >:3\"></form><hr><form action=http://192.168.4.1/m_three><input type=submit value=\"Sad :c\"></form><hr><form action=http://192.168.4.1/m_four><input type=submit value=\"Anxious :/\"></form><hr></div><style>h1{text-align:center;font-family:Verdana,sans-serif;color:#8b4513;margin-bottom:0}h2{text-align:center;margin-bottom:0}body{display:grid;align-items:center;justify-content:center;background-color:#ffebcd;height:100vh}input{color:#8b4513;font-size:30px;width:100%;background-color:#ffebcd;border:0}hr{width:80%;height:0}div{width:800px;height:70vh;display:grid}</style>";
+static const char tim[] PROGMEM = "<form action=time><input type=number id=happy placeholder=Happy value=1200> <input type=number id=angry placeholder=Angry value=1200> <input type=number id=sad placeholder=Sad value=1200> <input type=number id=anxious placeholder=Anxious value=1200> <input type=number id=dhappy placeholder=\"Happy Decrement\"value=0> <input type=number id=dangry placeholder=\"Angry Decrement\"value=0> <input type=number id=dsad placeholder=\"Sad Decrement\"value=0> <input type=number id=danxious placeholder=\"Anxious Decrement\"value=0> <input type=submit></form>";
 ESP8266WebServer server(80);
 
 void setup() {
@@ -105,11 +105,11 @@ void setup() {
         times[0] = server.arg("happy").toInt();
         times[1] = server.arg("angry").toInt();
         times[2] = server.arg("sad").toInt();
-        times[3] = server.arg("bored").toInt();
+        times[3] = server.arg("anxious").toInt();
         dhappy = server.arg("dhappy").toInt();
         dangry = server.arg("dangry").toInt();
         dsad = server.arg("dsad").toInt();
-        dbored = server.arg("dbored").toInt();
+        danxious = server.arg("danxious").toInt();
     });
     
     server.on("/set", []() { server.send(200, "text/html", sets); });
