@@ -169,6 +169,7 @@ void dispense_switch() {
 
 // rotate motor for n milliseconds
 void dispense_time(int type) {
+    MOTOR_OFF(MOTOR_PIN);
     int start_time = millis();
     int delay = gen_time(type);
     MOTOR_ON(MOTOR_PIN);
