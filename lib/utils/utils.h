@@ -1,7 +1,7 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 
-#define MOTOR_ON(x) digitalWrite(x, LOW);
+#define MOTOR_ON(x) analogWrite(x, 50); // 255 - motor speed
 #define MOTOR_OFF(x) digitalWrite(x, HIGH);
 
 struct selector_pins {
